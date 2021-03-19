@@ -40,7 +40,7 @@ class _AppState extends State<App> {
 <br/>
 
 ## 2. Import the package and write size by `vh, vw` anywhere
-- Method 1: 36.vw, 52.0.vw, 100vh
+- Method 1: 36.vw, 52.0.vw, 100.vh
 - Method 2: Adapter.setVW(25), Adapter.setVH(30)
 - Method 3: Adapter.vw * 32, Adapter.vh * 75
 
