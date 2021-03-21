@@ -13,67 +13,61 @@
     <img src="https://img.shields.io/badge/Mode-all-3949ab" alt="😭" />
 </div>
 
-### A library of platform adaptation scheme based on the ViewPort (vw and vh).
+## A library of platform adaptation scheme based on the ViewPort (vw and vh) and Relative Position.
 
-<br/>
-<br/>
-<br/>
+---
 
-## 1. Initialize the adapter
+> The package contains two types of adapters. One is a global adapter based on viewport(vw, vh), and the other is a percentage adapter based on relative positioning.
+
+---
+
+## 1. The global adapter based on viewport(vw, vh)
+### 1) Initialize the adapter
 ~~~dart
-import 'package:flutter/material.dart';
-import 'package:suit/suit.dart';
-
-class _AppState extends State<App> {
-  @override
-  Widget build(BuildContext context) {
+    /// [Adapter] is the global adapter, for Viewport(vw, vh).
     Adapter.initialize(context);
-
-    return Scaffold();
-  }
-}
 ~~~
  - Cannot initialize under root widget
- - An application only needs to be initialized once
+ - An application only needs to initialize the global adapter once
  - You can write it in any lifecycle hook, but for desktop application adaptation, it's better to write it in the `build` method
 
-<br/>
 
-## 2. Import the package and write size by `vh, vw` anywhere
+
+### 2) Import the package and write size by `vw, vh` anywhere
+~~~dart
+Container(
+  width: 25.vw,
+  height: 75.vh
+)
+~~~
 - Method 1: 36.vw, 52.0.vw, 100.vh
-- Method 2: Adapter.setVW(25), Adapter.setVH(30)
+- Method 2: Adapter.setVW(25.0), Adapter.setVH(30.0)
 - Method 3: Adapter.vw * 32, Adapter.vh * 75
 
-<br/>
-<br/>
 
-## Complete example:
 
+---
+
+## 2. The percentage adapter based on Relative Position.
+### Method 1: Use the extension syntax of the Dart language
 ~~~dart
-import 'package:flutter/material.dart';
-import 'package:suit/suit.dart';
-
-
-void main() => runApp(MaterialApp(home: App()));
-
-class App extends StatefulWidget {
-  @override
-  _AppState createState() => _AppState();
+/// Relative to the `percentage` of encapsulated `class widgets`.
+@override
+Widget build(BuildContext context) {
+  return Text('hello', style: TextStyle(fontSize: 20.rw(context)));
 }
-
-class _AppState extends State<App> {
-  @override
-  Widget build(BuildContext context) {
-    // You can write it to initialize adapter here
-    Adapter.initialize(context);
-    return Scaffold(
-        body: Container(
-            width: 25.vw,
-            height: 75.vh,
-            color: Colors.red
-        )
-    );
-  }
-}
-
 ~~~
+
+### Method 2: Use the method of instantiating the `RAdater` class
+~~~dart
+@override
+Widget build(BuildContext context) {
+  var adapter = RAdapter(context);
+  return Text('hello', style: TextStyle(fontSize: adapter.setRW(20)));
+}
+~~~
+
+---
+
+## 3. Complete example
+[Click me to lookup the whole example code](https://pub.dev/packages/suit/example)

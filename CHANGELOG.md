@@ -1,3 +1,8 @@
+## [1.1.0] - Relative position
+- Support relative position
+- Update the example
+- Rewrite the doc file
+
 ## [1.0.0] - Null Safety
 - Support nullsafety
 - Add travis-ci
