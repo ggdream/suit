@@ -1,26 +1,27 @@
 import 'package:flutter/widgets.dart';
 
-class RAdapter {
-  double rw = 0.0;
-  double rh = 0.0;
+abstract class RAdapterLessWidget extends StatelessWidget {
+  final double _width;
+  final double _height;
 
-  RAdapter(BuildContext context) {
-    var mediaMeta = MediaQuery.of(context);
+  RAdapterLessWidget({Key? key, required double width, required double height})
+      : this._width = width / 100,
+        this._height = height / 100,
+        super(key: key);
 
-    this.rw = mediaMeta.size.width / 100;
-    this.rh = mediaMeta.size.height / 100;
-  }
-
-  double setRW(double size) => this.rw * size;
-  double setRH(double size) => this.rh * size;
+  double rw(double size) => this._width * size;
+  double rh(double size) => this._height * size;
 }
 
-extension RAdaptIntType on int {
-  double rw(BuildContext context) => RAdapter(context).setRW(this.toDouble());
-  double rh(BuildContext context) => RAdapter(context).setRH(this.toDouble());
-}
+abstract class RAdapterFulWidget extends StatefulWidget {
+  final double _width;
+  final double _height;
 
-extension RAdaptDoubleType on double {
-  double rw(BuildContext context) => RAdapter(context).setRW(this);
-  double rh(BuildContext context) => RAdapter(context).setRH(this);
+  RAdapterFulWidget({Key? key, required double width, required double height})
+      : this._width = width / 100,
+        this._height = height / 100,
+        super(key: key);
+
+  double rw(double size) => this._width * size;
+  double rh(double size) => this._height * size;
 }

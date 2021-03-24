@@ -1,6 +1,6 @@
 name: suit
 description: A library of platform adaptation scheme based on the ViewPort(vw, vh) and Relative Position(rw, rh).
-version: 1.1.0
+version: 2.0.0-beta.1
 homepage: https://github.com/ggdream/suit
 
 environment:

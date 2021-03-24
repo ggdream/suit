@@ -1,3 +1,7 @@
+## [2.0.0-beta.1] - Change the implement of relative position
+- Add class `RAdapterLessWidget` and `RAdapterFulWidget`
+- Remove class `RAdpater`
+
 ## [1.1.0] - Relative position
 - Support relative position
 - Update the example

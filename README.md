@@ -17,7 +17,7 @@
 
 ---
 
-> The package contains two types of adapters. One is a global adapter based on viewport(vw, vh), and the other is a percentage adapter based on relative positioning.
+> The package contains two types of adapters. One is a global adapter based on viewport(vw, vh), and the other is a percentage adapter based on Relative Positioning(rw, rh).
 
 ---
 
@@ -48,26 +48,8 @@ Container(
 
 ---
 
-## 2. The percentage adapter based on Relative Position.
-### Method 1: Use the extension syntax of the Dart language
-~~~dart
-/// Relative to the `percentage` of encapsulated `class widgets`.
-@override
-Widget build(BuildContext context) {
-  return Text('hello', style: TextStyle(fontSize: 20.rw(context)));
-}
-~~~
+## 2. The percentage adapter based on Relative Position(rw, rh).
 
-### Method 2: Use the method of instantiating the `RAdater` class
-~~~dart
-@override
-Widget build(BuildContext context) {
-  var adapter = RAdapter(context);
-  return Text('hello', style: TextStyle(fontSize: adapter.setRW(20)));
-}
-~~~
-
----
 
 ## 3. Complete example
 [Click me to lookup the whole example code](https://pub.dev/packages/suit/example)

@@ -16,25 +16,30 @@ class _AppState extends State<App> {
 
     return Scaffold(
       appBar: AppBar(),
-      body: Container(child: RelativeWidget(), width: 60.vw, height: 75.8.vh),
+      body: Container(child: MyTest(), width: 60.vw, height: 75.8.vh),
     );
   }
 }
 
-class RelativeWidget extends StatelessWidget {
-  const RelativeWidget({
-    Key? key,
-  }) : super(key: key);
+class MyTest extends RAdapterLessWidget {
+  MyTest() : super(width: 100, height: 60);
 
   @override
   Widget build(BuildContext context) {
-    /// Example: [double.rw]. Using `the percentage adapter based on Relative Position` here.
-    return Text('hello', style: TextStyle(fontSize: 20.rw(context)));
-
-    /// Or use the other way:
-    /// ```
-    /// var adapter = RAdapter(context);
-    /// return Text('hello', style: TextStyle(fontSize: adapter.setRW(20)));
-    /// ```
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Container(
+          color: Colors.black,
+          width: rw(50),
+          height: rh(100),
+        ),
+        Container(
+          color: Colors.red,
+          width: rw(50),
+          height: rh(50),
+        )
+      ],
+    );
   }
 }
